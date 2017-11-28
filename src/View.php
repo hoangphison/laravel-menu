@@ -29,7 +29,7 @@ class View implements Item, Activatable, HasParentAttributes
     /** @var Attributes */
     protected $parentAttributes;
 
-    public function __construct(string $name, array $data = [])
+    public function __construct($name, array $data = [])
     {
         $this->name = $name;
         $this->data = $data;
@@ -42,7 +42,7 @@ class View implements Item, Activatable, HasParentAttributes
      *
      * @return static
      */
-    public static function create(string $name, array $data = [])
+    public static function create($name, array $data = [])
     {
         $view = new static($name, $data);
 
@@ -56,7 +56,7 @@ class View implements Item, Activatable, HasParentAttributes
     /**
      * @return string
      */
-    public function render(): string
+    public function render()
     {
         return view($this->name)
             ->with($this->data + ['active' => $this->isActive()])

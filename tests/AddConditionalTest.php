@@ -11,7 +11,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->urlIf(true, '/', 'Home')
+            Menu::newMenu()->urlIf(true, '/', 'Home')
         );
     }
 
@@ -20,7 +20,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->urlIf(false, '/', 'Home')
+            Menu::newMenu()->urlIf(false, '/', 'Home')
         );
     }
 
@@ -29,7 +29,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->actionIf(true, DummyController::class.'@home', 'Home')
+            Menu::newMenu()->actionIf(true, DummyController::class.'@home', 'Home')
         );
     }
 
@@ -38,7 +38,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->actionIf(false, DummyController::class.'@home', 'Home')
+            Menu::newMenu()->actionIf(false, DummyController::class.'@home', 'Home')
         );
     }
 
@@ -47,7 +47,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->routeIf(true, 'home', 'Home')
+            Menu::newMenu()->routeIf(true, 'home', 'Home')
         );
     }
 
@@ -56,7 +56,7 @@ class AddConditionalTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->routeIf(false, 'home', 'Home')
+            Menu::newMenu()->routeIf(false, 'home', 'Home')
         );
     }
 }

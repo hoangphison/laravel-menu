@@ -29,7 +29,7 @@ class ViewTest extends TestCase
     /** @test */
     public function it_can_receive_a_url_through_extra_data()
     {
-        $menu = Menu::new()
+        $menu = Menu::newMenu()
             ->view('simple', ['url' => '/'])
             ->view('simple', ['url' => '/about'])
             ->setActive('/about');

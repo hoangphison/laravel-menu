@@ -33,7 +33,7 @@ class TestCase extends BaseTestCase
         $app['config']->set('view.paths', [__DIR__.'/resources/views']);
     }
 
-    protected function assertRenders(string $expected, Item $item, string $message = '')
+    protected function assertRenders($expected, Item $item, $message = '')
     {
         $this->assertEquals(
             $this->sanitizeHtmlWhitespace($expected),
@@ -42,7 +42,7 @@ class TestCase extends BaseTestCase
         );
     }
 
-    protected function sanitizeHtmlWhitespace(string $subject) : string
+    protected function sanitizeHtmlWhitespace($subject)
     {
         $find = ['/>\s+</', '/(^\s+)|(\s+$)/'];
         $replace = ['><', ''];

@@ -27,7 +27,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function setActiveFromRequest(string $requestRoot = '/')
+    public function setActiveFromRequest($requestRoot = '/')
     {
         return $this->setActive(app('request')->url(), $requestRoot);
     }
@@ -40,7 +40,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function url(string $path, string $text, $parameters = [], $secure = null)
+    public function url($path, $text, $parameters = [], $secure = null)
     {
         return $this->add(Link::toUrl($path, $text, $parameters, $secure));
     }
@@ -53,7 +53,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function action(string $action, string $text, $parameters = [], bool $absolute = true)
+    public function action($action, $text, $parameters = [], $absolute = true)
     {
         return $this->add(Link::toAction($action, $text, $parameters, $absolute));
     }
@@ -66,7 +66,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function route(string $name, string $text, $parameters = [], bool $absolute = true)
+    public function route($name, $text, $parameters = [], $absolute = true)
     {
         return $this->add(Link::toRoute($name, $text, $parameters, $absolute));
     }
@@ -77,7 +77,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function view(string $name, array $data = [])
+    public function view($name, array $data = [])
     {
         return $this->add(View::create($name, $data));
     }
@@ -91,7 +91,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function urlIf($condition, string $path, string $text, array $parameters = [], $secure = null)
+    public function urlIf($condition, $path, $text, array $parameters = [], $secure = null)
     {
         return $this->addIf($condition, Link::toUrl($path, $text, $parameters, $secure));
     }
@@ -105,7 +105,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function actionIf($condition, string $action, string $text, array $parameters = [], bool $absolute = true)
+    public function actionIf($condition, $action, $text, array $parameters = [], $absolute = true)
     {
         return $this->addIf($condition, Link::toAction($action, $text, $parameters, $absolute));
     }
@@ -119,7 +119,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function routeIf($condition, string $name, string $text, array $parameters = [], bool $absolute = true)
+    public function routeIf($condition, $name, $text, array $parameters = [], $absolute = true)
     {
         return $this->addIf($condition, Link::toRoute($name, $text, $parameters, $absolute));
     }
@@ -131,7 +131,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function viewIf($condition, string $name, array $data = null)
+    public function viewIf($condition, $name, array $data = null)
     {
         return $this->addIf($condition, View::create($name, $data));
     }
@@ -157,7 +157,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function linkIfCan($authorization, string $url, string $text)
+    public function linkIfCan($authorization, $url, $text)
     {
         return $this->addIfCan($authorization, Link::to($url, $text));
     }
@@ -168,7 +168,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return \Spatie\Menu\Laravel\Menu
      */
-    public function htmlIfCan($authorization, string $html)
+    public function htmlIfCan($authorization, $html)
     {
         return $this->addIfCan($authorization, Html::raw($html));
     }
@@ -190,7 +190,7 @@ class Menu extends BaseMenu implements Htmlable
         return $this->addIfCan($authorization, $menu->prependIf($header, $header));
     }
 
-    protected function parseSubmenuIfCanArgs($authorization, ...$args): array
+    protected function parseSubmenuIfCanArgs($authorization, ...$args)
     {
         return array_merge([$authorization], $this->parseSubmenuArgs($args));
     }
@@ -204,7 +204,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function urlIfCan($authorization, string $path, string $text, array $parameters = [], $secure = null)
+    public function urlIfCan($authorization, $path, $text, array $parameters = [], $secure = null)
     {
         return $this->addIfCan($authorization, Link::toUrl($path, $text, $parameters, $secure));
     }
@@ -218,7 +218,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function actionIfCan($authorization, string $action, string $text, array $parameters = [], bool $absolute = true)
+    public function actionIfCan($authorization, $action, $text, array $parameters = [], $absolute = true)
     {
         return $this->addIfCan($authorization, Link::toAction($action, $text, $parameters, $absolute));
     }
@@ -232,7 +232,7 @@ class Menu extends BaseMenu implements Htmlable
      *
      * @return $this
      */
-    public function routeIfCan($authorization, string $name, string $text, array $parameters = [], bool $absolute = true)
+    public function routeIfCan($authorization, $name, $text, array $parameters = [], $absolute = true)
     {
         return $this->addIfCan($authorization, Link::toRoute($name, $text, $parameters, $absolute));
     }
@@ -245,7 +245,7 @@ class Menu extends BaseMenu implements Htmlable
      * @return $this
      * @internal param $condition
      */
-    public function viewIfCan($authorization, string $name, array $data = null)
+    public function viewIfCan($authorization, $name, array $data = null)
     {
         return $this->addIfCan($authorization, View::create($name, $data));
     }
@@ -253,7 +253,7 @@ class Menu extends BaseMenu implements Htmlable
     /**
      * @return string
      */
-    public function toHtml() : string
+    public function toHtml()
     {
         return $this->render();
     }

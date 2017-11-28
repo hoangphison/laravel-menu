@@ -12,7 +12,7 @@ class SetActiveTest extends TestCase
     {
         $this->call('get', '/post/1');
 
-        $menu = Menu::new()
+        $menu = Menu::newMenu()
             ->add(Link::toRoute('home', 'Home'))
             ->add(Link::toRoute('post', 'Post #1', [1]))
             ->setActiveFromRequest();

@@ -20,7 +20,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="/">Home</a></li></ul>',
-            Menu::new()->addIfCan('computerSaysYes', Link::to('/', 'Home'))
+            Menu::newMenu()->addIfCan('computerSaysYes', Link::to('/', 'Home'))
         );
     }
 
@@ -29,7 +29,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->addIfCan('computerSaysNo', Link::to('/', 'Home'))
+            Menu::newMenu()->addIfCan('computerSaysNo', Link::to('/', 'Home'))
         );
     }
 
@@ -38,12 +38,12 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="/">Home</a></li></ul>',
-            Menu::new()->addIfCan(['computerSaysMaybe', true], Link::to('/', 'Home'))
+            Menu::newMenu()->addIfCan(['computerSaysMaybe', true], Link::to('/', 'Home'))
         );
 
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->addIfCan(['computerSaysMaybe', false], Link::to('/', 'Home'))
+            Menu::newMenu()->addIfCan(['computerSaysMaybe', false], Link::to('/', 'Home'))
         );
     }
 
@@ -52,7 +52,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="/">Home</a></li></ul>',
-            Menu::new()->linkIfCan('computerSaysYes', '/', 'Home')
+            Menu::newMenu()->linkIfCan('computerSaysYes', '/', 'Home')
         );
     }
 
@@ -61,7 +61,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->linkIfCan('computerSaysNo', '/', 'Home')
+            Menu::newMenu()->linkIfCan('computerSaysNo', '/', 'Home')
         );
     }
 
@@ -70,7 +70,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="/">Home</a></li></ul>',
-            Menu::new()->htmlIfCan('computerSaysYes', '<a href="/">Home</a>')
+            Menu::newMenu()->htmlIfCan('computerSaysYes', '<a href="/">Home</a>')
         );
     }
 
@@ -79,7 +79,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->htmlIfCan('computerSaysNo', '<a href="/">Home</a>')
+            Menu::newMenu()->htmlIfCan('computerSaysNo', '<a href="/">Home</a>')
         );
     }
 
@@ -88,7 +88,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->urlIfCan('computerSaysYes', '/', 'Home')
+            Menu::newMenu()->urlIfCan('computerSaysYes', '/', 'Home')
         );
     }
 
@@ -97,7 +97,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->urlIfCan('computerSaysNo', '/', 'Home')
+            Menu::newMenu()->urlIfCan('computerSaysNo', '/', 'Home')
         );
     }
 
@@ -106,7 +106,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->actionIfCan('computerSaysYes', DummyController::class.'@home', 'Home')
+            Menu::newMenu()->actionIfCan('computerSaysYes', DummyController::class.'@home', 'Home')
         );
     }
 
@@ -115,7 +115,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->actionIfCan('computerSaysNo', DummyController::class.'@home', 'Home')
+            Menu::newMenu()->actionIfCan('computerSaysNo', DummyController::class.'@home', 'Home')
         );
     }
 
@@ -124,7 +124,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="http://localhost">Home</a></li></ul>',
-            Menu::new()->routeIfCan('computerSaysYes', 'home', 'Home')
+            Menu::newMenu()->routeIfCan('computerSaysYes', 'home', 'Home')
         );
     }
 
@@ -133,7 +133,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->routeIfCan('computerSaysNo', 'home', 'Home')
+            Menu::newMenu()->routeIfCan('computerSaysNo', 'home', 'Home')
         );
     }
 
@@ -142,7 +142,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul><li><a href="home">Home</a><ul><li><a href="sub">Sub</a></li></ul></li></ul>',
-            Menu::new()->submenuIfCan('computerSaysYes', Link::to('home', 'Home'), Menu::new()->link('sub', 'Sub'))
+            Menu::newMenu()->submenuIfCan('computerSaysYes', Link::to('home', 'Home'), Menu::newMenu()->link('sub', 'Sub'))
         );
     }
 
@@ -151,7 +151,7 @@ class AddWithPermissionsTest extends TestCase
     {
         $this->assertRenders(
             '<ul></ul>',
-            Menu::new()->submenuIfCan('computerSaysNo', Link::to('home', 'Home'), Menu::new()->link('sub', 'Sub'))
+            Menu::newMenu()->submenuIfCan('computerSaysNo', Link::to('home', 'Home'), Menu::newMenu()->link('sub', 'Sub'))
         );
     }
 }
