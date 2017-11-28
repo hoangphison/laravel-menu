@@ -1,14 +1,9 @@
 # Html Menu Generator for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-menu.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-menu)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/spatie/laravel-menu/master.svg?style=flat-square)](https://travis-ci.org/spatie/laravel-menu)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/3bd62ed7-f165-470d-896e-74757b9c6023.svg?style=flat-square)](https://insight.sensiolabs.com/projects/3bd62ed7-f165-470d-896e-74757b9c6023)
-[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-menu.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-menu)
-[![StyleCI](https://styleci.io/repos/52299893/shield?branch=master)](https://styleci.io/repos/52299893)
-[![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-menu.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-menu)
+[![Build Status](https://travis-ci.org/hoangphison/laravel-menu.svg?branch=master)](https://travis-ci.org/hoangphison/laravel-menu)
+[![StyleCI](https://styleci.io/repos/111900225/shield?branch=master)](https://styleci.io/repos/111900225)
 
-This is the Laravel version of [our menu package](https://github.com/spatie/menu) adds some extras like convenience methods for generating URLs and macros.
+This is the Laravel version of [our menu package](https://github.com/hoangphison/menu) adds some extras like convenience methods for generating URLs and macros.
 
 Documentation is available at https://docs.spatie.be/menu.
 
@@ -16,7 +11,7 @@ Upgrading from version 1? There's a [guide](https://github.com/spatie/laravel-me
 
 ```php
 Menu::macro('main', function () {
-    return Menu::new()
+    return Menu::newMenu()
         ->action('HomeController@index', 'Home')
         ->action('AboutController@index', 'About')
         ->action('ContactController@index', 'Contact')
@@ -37,7 +32,7 @@ Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview 
 You can install the package via composer:
 
 ``` bash
-$ composer require spatie/laravel-menu
+$ composer require hoangphison/laravel-menu
 ```
 
 ## Usage
@@ -49,7 +44,7 @@ Documentation is available at https://docs.spatie.be/menu.
 Upgrading to 2.0 should be pretty painless for most use cases.
 
 - Link builder methods have been renamed and now have a `to` prefix: `Link::toAction`, `Link::toRoute` and `Link::toUrl`.
-- See `spatie/menu`'s [upgrade guide](https://github.com/spatie/menu#upgrading-to-20) for more.
+- See `hoangphison/menu`'s [upgrade guide](https://github.com/spatie/menu#upgrading-to-20) for more.
 
 ### New features...
 
